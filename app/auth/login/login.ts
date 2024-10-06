@@ -3,8 +3,8 @@
 import { post } from "@/app/util/fetch";
 import { redirect } from "next/navigation";
 
-export default async function createUser(_prevState: any, formData: FormData) {
-  const response = await post("users", formData);
+export default async function login(_prevState: any, formData: FormData) {
+  const response = await post("auth/login", formData);
 
   if (response.error) {
     return response;

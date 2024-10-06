@@ -1,12 +1,12 @@
-export function getErrorMessage(response: any) {
+export function getErrorMessage(response: any): Array<string> {
   if (response.message) {
     const { message } = response;
-    if (Array.isArray(response.message)) {
+    if (Array.isArray(message)) {
       return message.map(formatErrorMessage);
     }
-    return formatErrorMessage(message);
+    return [formatErrorMessage(message)];
   }
-  return "Unknown error ocurred.";
+  return ["Unknown error ocurred."];
 }
 
 function formatErrorMessage(message: string) {
