@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { API_URL } from "../constants/api";
 import { getErrorMessage } from "./errors";
 import { jwtDecode } from "jwt-decode";
+import { AUTHENTICATION_COOKIE } from "@/app/auth/auth-cookie";
 
 type ErrorResponse = {
   error: boolean;
@@ -17,12 +18,12 @@ function setCookies() {
 function setAuthCookie(response: Response) {
   const setCookieHeader = response.headers.getSetCookie();
   const authCookie = setCookieHeader.find((c) =>
-    c.startsWith("Authentication"),
+    c.startsWith(AUTHENTICATION_COOKIE),
   );
   if (authCookie) {
     const token = authCookie.split(";")[0].split("=")[1];
     cookies().set({
-      name: "Authentication",
+      name: AUTHENTICATION_COOKIE,
       value: token,
       httpOnly: true,
       secure: true,

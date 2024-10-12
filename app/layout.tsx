@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { Container, CssBaseline, ThemeProvider } from "@mui/material";
-import darkTheme from "./darkTheme";
+import { Container, CssBaseline } from "@mui/material";
+import Header from "./header/header";
+import Providers from "./providers";
+import authenticated from "./auth/authenticated";
+import logout from "./auth/logout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,22 +23,22 @@ export const metadata: Metadata = {
   description: "Shopi E-Commerce",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isAuthenticated = authenticated();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={darkTheme}>
-            <CssBaseline></CssBaseline>
-            <Container>{children}</Container>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <Providers authenticated={isAuthenticated}>
+          <CssBaseline />
+          <Header logout={logout} />
+          <Container>{children}</Container>
+        </Providers>
       </body>
     </html>
   );

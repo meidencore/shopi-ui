@@ -1,6 +1,6 @@
 "use server";
 
-import { post } from "@/app/util/fetch";
+import { post } from "@/app/common/util/fetch";
 import { redirect } from "next/navigation";
 
 export default async function login(_prevState: any, formData: FormData) {
