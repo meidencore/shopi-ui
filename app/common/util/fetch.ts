@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { API_URL } from "../constants/api";
 
-function setCookies() {
+export function setCookies() {
   return { Cookie: cookies().toString() };
 }
 
