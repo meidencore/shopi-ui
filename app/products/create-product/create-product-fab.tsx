@@ -13,7 +13,7 @@ export default function CreateProductFab() {
         open={modalVisible}
         handleClose={() => setModalVisible(false)}
       />
-      <div className="absolute bottom-10 left-10">
+      <div className="fixed bottom-10 left-10">
         <Fab color="primary" onClick={() => setModalVisible(true)}>
           <AddIcon />
         </Fab>
