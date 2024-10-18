@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Grid2 as Grid } from "@mui/material";
 import getProducts from "./actions/get-products";
 import Product from "./product";
 
@@ -6,14 +6,14 @@ export default async function Products() {
   const products = await getProducts();
 
   return (
-    <Grid2 container spacing={3}>
+    <Grid container spacing={3} marginBottom={"2rem"}>
       {products.map((product) => {
         return (
-          <Grid2 key={product.id} size={{ sm: 6, lg: 4, xs: 12 }}>
+          <Grid key={product.id} size={{ sm: 6, lg: 4, xs: 12 }}>
             <Product product={product} />
-          </Grid2>
+          </Grid>
         );
       })}
-    </Grid2>
+    </Grid>
   );
 }
