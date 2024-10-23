@@ -5,7 +5,6 @@ import { Product as IProduct } from "./interfaces/product.interface";
 import Image from "next/image";
 import getProductImage from "./product-image";
 import { useRouter } from "next/navigation";
-import Checkout from "../checkout/checkout";
 
 interface ProductProps {
   product: IProduct;
